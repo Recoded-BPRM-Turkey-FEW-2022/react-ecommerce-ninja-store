@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
-import { Rating} from '@mui/material';
-//import { Rating,Container,Grid,CardActionArea,Typography,CardMedia,Card,CardContent } from '@mui/material';
-
+import { Rating } from '@mui/material';
  
+ 
+
+
 
 
 
@@ -44,7 +45,7 @@ export default function MainPage() {
 
       {data.map(item => (
       
-      <Grid item xs={12} sm={6} md={4} xl={3}  >
+      <Grid item xs={12} sm={6} md={3}  >
 <Card className='card' key={item.id} sx={{ maxWidth: 300 }}>
     <CardActionArea>
       <CardMedia
@@ -55,23 +56,21 @@ export default function MainPage() {
       />
       <CardContent>
       
-        <Typography variant="body2" color="text.primary">
+        <Typography variant="body2" color="text.secondary">
           {item.title}
         </Typography>
 
-        <Typography  component="div">
+        <Typography gutterBottom variant="h5" component="div">
 
-        <div>
+
         <Rating
   name="text-feedback"
-  value={item.rating.rate}
+  value={item}
   readOnly
-  precision={0.25}
+  precision={0.5}
+  //emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                 />
-                
-                ({item.rating.count})  
-                </div>
-                
+{/* <Box sx={{ ml: 2 }}>{labels[value]}</Box> */}
         </Typography>
       </CardContent>
     </CardActionArea>
