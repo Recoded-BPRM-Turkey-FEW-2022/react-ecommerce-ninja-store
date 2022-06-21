@@ -1,10 +1,12 @@
 import React from "react";
 import "./style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarComp from './components/NavbarComp';
 
 export default function App() {
   return (
     <div>
-      <h1>React Ecommerce!</h1>
+      <NavbarComp />
     </div>
   );
 }
