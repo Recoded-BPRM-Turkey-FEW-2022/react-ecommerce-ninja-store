@@ -61,8 +61,8 @@ export default function MainPage() {
 
         <Typography  component="div">
 
-        <div>
-        <Rating
+        <Grid sx={{ display: 'inline-flex' }}>    
+            <Rating
   name="text-feedback"
   value={item.rating.rate}
   readOnly
@@ -70,19 +70,13 @@ export default function MainPage() {
                 />
                 
                 ({item.rating.count})  
-                </div>
+                </Grid>
                 
         </Typography>
       </CardContent>
     </CardActionArea>
   </Card>
   </Grid>
-
-
-
-
-         
-
 
 
       ))}  
