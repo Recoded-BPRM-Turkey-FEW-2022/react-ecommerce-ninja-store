@@ -3,3 +3,39 @@ p {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.productPage{
+  margin-top: 5rem;
+}
+.productPanel{
+  padding: 0.8rem;
+  box-shadow: 0px 0px 3px rgb(149, 148, 148);
+}
+
+.productPhoto{
+  min-height: 550px;
+}
+
+.MuiGrid-item {
+  padding: 10px;   
+}
+
+.quantityPanel  {
+  min-width: 10rem;
+}
+
+.quantityPanel Button{
+  height: 2.5rem;
+  max-Width:2rem;
+  min-Width:2rem;
+  margin: 0px 0.2rem;
+}
+
+.quantityTextholder{
+  width: 4rem;
+  height: 3rem;
+}
+
+.addToCartBtn{
+   font-size: 1rem !important;
+  width: 100% ;
+}
