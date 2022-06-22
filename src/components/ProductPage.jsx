@@ -15,9 +15,13 @@ import {
   Button,
 } from "@mui/material";
 import { PhotoCamera, ThreeDRotation } from "@mui/icons-material";
-import Box from '@mui/material/Box';
-
+import Box from "@mui/material/Box";
+import AddCardIcon from "@mui/icons-material/AddCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import EmailIcon from "@mui/icons-material/Email";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import Rating from "@mui/material/Rating";
 
 import "../style.css";
@@ -40,7 +44,7 @@ function ProductPage() {
       <main maxWidth="lg" className="productPage">
         <Container>
           <Grid container spacing={4}>
-            <Grid item md={9}>
+            <Grid item md={12}>
               <Grid container spacing={3} className="productPanel">
                 <Grid item md={5}>
                   <Card>
@@ -50,22 +54,28 @@ function ProductPage() {
                       image={data.image}
                       title="image title"
                     />
-                    <CardActions>
-                      <Button>View</Button>
-                      <Button>Edit</Button>
+                    <CardActions className="centered" >
+                      <Button  variant="outlined">
+                        Add To Wish List
+                      </Button>
                     </CardActions>
                   </Card>
                 </Grid>
                 <Grid item md={7}>
-                  <Card>
+                  <Card className=" productDetails">
                     <CardContent>
                       <Typography gutterBottom variant="h5">
-                        {data.title}
+                        {data.title.toUpperCase()}
                       </Typography>
 
                       <Typography className="priceLable">
-                        {data.price}
+                        <h4>
+                          <del>$459.00</del>
+                          <span className="discount">55% off</span>
+                        </h4>
+                        <h4 className="realPrice">${data.price}</h4>
                       </Typography>
+                      <h5 className="product-title">quantity</h5>
                       <div className="quantityPanel">
                         <Button variant="outlined">-</Button>
                         <TextField
@@ -73,57 +83,88 @@ function ProductPage() {
                           variant="outlined"
                           className="quantityTextholder"
                           size="small"
+                          value={1}
                         />
                         <Button variant="outlined">+</Button>
                       </div>
-                      <div>
+                      <div className="actionBtns ">
                         <Button
                           variant="contained"
                           color="error"
                           endIcon={<AddShoppingCartIcon />}
-                          className="addToCartBtn"
+                          className="Btn"
+                          id="button"
                         >
-                          Add To Cart
+                          <span id="#text">
+                            <span id="w">Add To Cart</span>
+                          </span>
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="error"
+                          endIcon={<AddCardIcon />}
+                          className="Btn"
+                        >
+                          Buy Now
                         </Button>
                       </div>
-                      <Typography gutterBottom variant="h5">
+                      <Typography
+                        variant="h5"
+                        className=" product-title"
+                      >
+                        product details
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        paragraph
+                        className="description"
+                      >
                         {data.description}
                       </Typography>
-                      <Rating name="half-rating" defaultValue={data.rating.rate} precision={0.1} />
-
+                      <h5 className="product-title">Rate:</h5>
+                      <Rating
+                        name="half-rating"
+                        defaultValue={data.rating.rate}
+                        precision={0.1}
+                      />
                     </CardContent>
+                    {/* ................ */}
                     <CardActions>
-                      <Button>View</Button>
-                      <Button>Edit</Button>
+                      <div className="hr">
+                        <div class="card">
+                          <h4 className="product-title">Share It :</h4>
+                          <div className="socialIconTable">
+                            <a href="#Mail ">
+                              <span className="socialIcon hover-fx">
+                                {<EmailIcon fontSize="large" />}
+                              </span>
+                            </a>
+                            <a href="#Facebook ">
+                              <span className="socialIcon hover-fx">
+                                {<FacebookIcon fontSize="large" />}
+                              </span>
+                            </a>
+                            <a href="#Instgram ">
+                              <span className="socialIcon hover-fx">
+                                {<InstagramIcon fontSize="large" />}
+                              </span>
+                            </a>
+                            <a href="#Twitter ">
+                              <span className="socialIcon hover-fx">
+                                {<TwitterIcon fontSize="large" />}
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </CardActions>
+
+                    {/* ............... */}
                   </Card>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={3}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  image="https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg?cs=srgb&dl=pexels-maxime-francis-2246476.jpg&fm=jpg"
-                  title="image title"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5">
-                    Heading
-                  </Typography>
-                  <Typography>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Asperiores, cupiditate quae aut at saepe atque, aperiam
-                    magni expedita obcaecati amet incidunt quasi ducimus.
-                    Quisquam itaque porro reiciendis est maiores numquam.
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button>View</Button>
-                  <Button>Edit</Button>
-                </CardActions>
-              </Card>
-            </Grid>
+            
           </Grid>
         </Container>
       </main>
