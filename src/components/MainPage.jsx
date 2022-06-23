@@ -1,6 +1,7 @@
 import React from 'react'
 import {useQuery} from 'react-query';
 import ReactDom from 'react-dom/client';
+//
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,6 +10,7 @@ import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
 import { Rating} from '@mui/material';
+import { Link } from 'react-router-dom';
 //import { Rating,Container,Grid,CardActionArea,Typography,CardMedia,Card,CardContent } from '@mui/material';
 
  
@@ -38,14 +40,15 @@ export default function MainPage() {
     
     console.log(data),
     <>  
-
+ 
   <Container maxWidth="xl">
   <Grid container spacing={2} >
 
       {data.map(item => (
       
-      <Grid item xs={12} sm={6} md={4} xl={3}  >
-<Card className='card' key={item.id} sx={{ maxWidth: 300 }}>
+      <Grid key={item.id} item xs={12} sm={6} md={4} xl={3} onClick={()=>console.log(item.id)} >
+         <Link to={`/Test/${item.id}`}>
+<Card className='card'  sx={{ maxWidth: 300 }}>
     <CardActionArea>
       <CardMedia
         component="img"
@@ -80,12 +83,15 @@ export default function MainPage() {
       </CardContent>
     </CardActionArea>
   </Card>
+  </Link>
   </Grid>
 
 
       ))}  
       </Grid>
       </Container>
+  
+  
        </>
 
 
