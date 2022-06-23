@@ -11,10 +11,10 @@ p {
   height:320px !important;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
   padding: 10px !important;
-  transition:  0.5ms ease-in-out;
+  transition: all .4s ease-in-out !important;
 }
 .card:hover{
   box-shadow: rgba(173, 10, 51) 0px 5px 5px !important;
-  transform: scale(1.1);
+  transform: scale(1.04);
 
 }

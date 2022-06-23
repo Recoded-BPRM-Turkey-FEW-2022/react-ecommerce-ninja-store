@@ -71,6 +71,10 @@ export default function MainPage() {
                 
                 ({item.rating.count})  
                 </Grid>
+                <div>
+                {item.price}$
+                </div>
+                
                 
         </Typography>
       </CardContent>
