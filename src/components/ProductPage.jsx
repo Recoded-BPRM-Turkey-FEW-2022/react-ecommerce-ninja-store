@@ -1,5 +1,8 @@
 import React from "react";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { useState } from "react";
+import { QueryClient, QueryClientProvider, useQuery,useMutation } from "react-query";
+import axios from 'axios';
+
 import {
   Typography,
   TextField,
@@ -14,8 +17,6 @@ import {
   Toolbar,
   Button,
 } from "@mui/material";
-import { PhotoCamera, ThreeDRotation } from "@mui/icons-material";
-import Box from "@mui/material/Box";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import EmailIcon from "@mui/icons-material/Email";
@@ -23,20 +24,26 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Rating from "@mui/material/Rating";
-
 import "../style.css";
 
 const queryClient = new QueryClient();
 
 function ProductPage() {
+  const [quantity,setQuantity]=useState(1)
   const { isLoading, error, data } = useQuery("repoData", async () => {
+
     let res = await fetch("https://fakestoreapi.com/products/1");
     return res.json();
   });
 
   console.log(data);
 
+  const addData = useMutation(data => {
+    return axios.post('http://localhost:8000/posts', {data})
+  })
+
   if (isLoading) return "Loading...";
+
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -54,10 +61,8 @@ function ProductPage() {
                       image={data.image}
                       title="image title"
                     />
-                    <CardActions className="centered" >
-                      <Button  variant="outlined">
-                        Add To Wish List
-                      </Button>
+                    <CardActions className="centered">
+                      <Button variant="outlined">Add To Wish List</Button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -77,18 +82,25 @@ function ProductPage() {
                       </Typography>
                       <h5 className="product-title">quantity</h5>
                       <div className="quantityPanel">
-                        <Button variant="outlined">-</Button>
+                        <Button variant="outlined" onClick={()=>{
+                           if(quantity-1>=1){setQuantity(quantity-1)}
+                        }}>-</Button>
                         <TextField
                           id="outlined-basic"
                           variant="outlined"
                           className="quantityTextholder"
                           size="small"
-                          value={1}
+                          value={quantity}
                         />
-                        <Button variant="outlined">+</Button>
+                        <Button variant="outlined" onClick={()=>{
+                          setQuantity(quantity+1)
+                        }}>+</Button>
                       </div>
                       <div className="actionBtns ">
                         <Button
+                        onClick={e=>addData.mutate(
+                          { ...data,"qunt":quantity }
+                          )}
                           variant="contained"
                           color="error"
                           endIcon={<AddShoppingCartIcon />}
@@ -108,10 +120,7 @@ function ProductPage() {
                           Buy Now
                         </Button>
                       </div>
-                      <Typography
-                        variant="h5"
-                        className=" product-title"
-                      >
+                      <Typography variant="h5" className=" product-title">
                         product details
                       </Typography>
                       <Typography
@@ -128,7 +137,6 @@ function ProductPage() {
                         precision={0.1}
                       />
                     </CardContent>
-                    {/* ................ */}
                     <CardActions>
                       <div className="hr">
                         <div class="card">
@@ -158,13 +166,10 @@ function ProductPage() {
                         </div>
                       </div>
                     </CardActions>
-
-                    {/* ............... */}
                   </Card>
                 </Grid>
               </Grid>
             </Grid>
-            
           </Grid>
         </Container>
       </main>
