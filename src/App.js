@@ -1,10 +1,7 @@
 import React from "react";
 import "./style.css";
 import { useQuery } from "react-query";
-import ProductPage from "./components/ProductPage";
 import { BrowserRouter, Route,Routes } from "react-router-dom";
-import Button from "@mui/material/Button";
-import MainPage from "./components/MainPage";
 import Cart from "./components/Cart";
 import ProductPage from './components/ProductPage'
 import Button from '@mui/material/Button';
@@ -17,11 +14,6 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { QueryClientProvider,QueryClient } from 'react-query';
 
 import Price from "./components/FilterPrice";
-import MainPage from "./components/NewMain"
-
-import {BrowserRouter  , Route, Link, Routes } from 'react-router-dom';
-import Test from './components/Test.jsx'
-import FakeCart from "./components/FakeCart";
  import NewMain from './components/NewMain.js'
 
  
@@ -41,7 +33,7 @@ export default function App() {
 
       <Route path='/products/:id' element={ <ProductPage />} />
 
-      {/* <Route path='/cart' element={ <Cart />} /> */}
+      <Route path='/cart' element={ <Cart />} />
       </Routes>
       </BrowserRouter>
    
