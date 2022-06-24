@@ -3,7 +3,7 @@ import "./style.css";
 import { useQuery } from "react-query";
 import ProductPage from './components/ProductPage'
 import Button from '@mui/material/Button';
-
+import { useParams } from "react-router";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComp from './components/NavbarComp';
@@ -21,6 +21,8 @@ import FakeCart from "./components/FakeCart";
 
  
 const queryClient = new QueryClient();
+
+  const {id}=useParams();
 export default function App() {
   return (
     <div>
@@ -31,9 +33,9 @@ export default function App() {
 
       <Route path='/' element={ <NewMain />} />
 
-      <Route path='/Test/:id' element={ <Test />} />
+      <Route path='/products/:id' element={ <ProductPage />} />
 
-      <Route path='/FakeCart' element={ <FakeCart />} />
+      {/* <Route path='/cart' element={ <Cart />} /> */}
       </Routes>
       </BrowserRouter>
    

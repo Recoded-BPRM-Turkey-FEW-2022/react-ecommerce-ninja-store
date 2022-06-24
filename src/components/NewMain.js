@@ -136,7 +136,7 @@ export default function MainPage() {
       <Grid key={item.id} item xs={12} sm={6} md={4} xl={3}  >
 <Card className='card'  sx={{ maxWidth: 300 }}>
     <CardActionArea>
-    <Link to={`/Test/${item.id}`}>
+    <Link to={`/products/${item.id}`}>
       <CardMedia
         component="img"
         height="200"

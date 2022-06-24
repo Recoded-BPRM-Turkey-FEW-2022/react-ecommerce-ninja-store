@@ -14,8 +14,6 @@ import {
   Toolbar,
   Button,
 } from "@mui/material";
-import { PhotoCamera, ThreeDRotation } from "@mui/icons-material";
-import Box from '@mui/material/Box';
 
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
@@ -26,7 +24,7 @@ const queryClient = new QueryClient();
 
 function ProductPage() {
   const { isLoading, error, data } = useQuery("repoData", async () => {
-    let res = await fetch("https://fakestoreapi.com/products/1");
+    let res = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`);
     return res.json();
   });
 
@@ -47,7 +45,7 @@ function ProductPage() {
                     <CardMedia
                       className="productPhoto"
                       component="img"
-                      image={data.image}
+                      image={data.images[0]}
                       title="image title"
                     />
                     <CardActions>
@@ -89,8 +87,7 @@ function ProductPage() {
                       <Typography gutterBottom variant="h5">
                         {data.description}
                       </Typography>
-                      <Rating name="half-rating" defaultValue={data.rating.rate} precision={0.1} />
-
+                      {/* <Rating name="half-rating" defaultValue={"data.rating.rate"} precision={0.1} /> */}
                     </CardContent>
                     <CardActions>
                       <Button>View</Button>
