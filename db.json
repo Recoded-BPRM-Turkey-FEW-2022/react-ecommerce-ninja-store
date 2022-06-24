@@ -1,30 +1,38 @@
 {
   "posts": [
     {
-      "id": 6,
-      "title": "Solid Gold Petite Micropave ",
-      "price": 168,
-      "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 70
+      "id": 2,
+      "title": "Ergonomic Concrete Ball",
+      "price": 23,
+      "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "category": {
+        "id": 2,
+        "name": "Electronics",
+        "image": "https://api.lorem.space/image/watch?w=640&h=480&r=5990"
       },
-      "quantity": 2
+      "images": [
+        "https://api.lorem.space/image/watch?w=640&h=480&r=9222",
+        "https://api.lorem.space/image/watch?w=640&h=480&r=1942",
+        "https://api.lorem.space/image/watch?w=640&h=480&r=6404"
+      ],
+      "quantity": 3
     },
     {
-      "id": 16,
-      "title": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
-      "price": 29.95,
-      "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
-      "category": "women's clothing",
-      "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
-      "rating": {
-        "rate": 2.9,
-        "count": 340
+      "id": 3,
+      "title": "Generic Rubber Salad",
+      "price": 711,
+      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "category": {
+        "id": 5,
+        "name": "Others",
+        "image": "https://api.lorem.space/image?w=640&h=480&r=3159"
       },
-      "quantity": 3
+      "images": [
+        "https://api.lorem.space/image?w=640&h=480&r=6365",
+        "https://api.lorem.space/image?w=640&h=480&r=29",
+        "https://api.lorem.space/image?w=640&h=480&r=1338"
+      ],
+      "quantity": 1
     }
   ]
 }

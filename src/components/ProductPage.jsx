@@ -39,10 +39,10 @@ const queryClient = new QueryClient();
 
 function ProductPage() {
   const { id } = useParams();
-
+  console.log(id)
   const [quantity, setQuantity] = useState(1);
   const { isLoading, error, data } = useQuery(`products/${id}`, async () => {
-    let res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    let res = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`);
     return res.json();
   });
 
@@ -50,11 +50,11 @@ function ProductPage() {
 
   console.log(data);
   const addData = useMutation((data) => {
-    axios.post("http://localhost:8000/posts", data).catch((e) => {
-      axios.delete(`http://localhost:8000/posts/${data.id}`).then((res) => {
+    axios.post("http://localhost:3000/posts", data).catch((e) => {
+      axios.delete(`http://localhost:3000/posts/${data.id}`).then((res) => {
         console.log(res);
         console.log(res.data);
-        axios.post("http://localhost:8000/posts", data);
+        axios.post("http://localhost:3000/posts", data);
       });
     });
   });
@@ -74,7 +74,7 @@ function ProductPage() {
                     <CardMedia
                       className="productPhoto"
                       component="img"
-                      image={data.image}
+                      image={data.images}
                       title="image title"
                       style={{
                         backgroundSize: "contain",
@@ -90,7 +90,7 @@ function ProductPage() {
                   <Card className=" productDetails">
                     <CardContent>
                       <Typography gutterBottom variant="h5">
-                        {data.title.toUpperCase()}
+                        {/* {data.title.toUpperCase()} */}
                       </Typography>
                       <Typography className="priceLable">
                         <del>$459.00</del>
@@ -168,13 +168,13 @@ function ProductPage() {
                       >
                         {data.description}
                       </Typography>
-                      <h5 className="product-title">Rate:</h5>
-                      <Rating
+                      {/* <h5 className="product-title">Rate:</h5> */}
+                      {/* <Rating
                         name="half-rating"
                         defaultValue={data.rating.rate}
                         precision={0.5}
-                      />
-                      <span className="count">({data.rating.count})</span>
+                      /> */}
+                      {/* <span className="count">({data.rating.count})</span> */}
                     </CardContent>
                     <CardActions>
                       <div className="hr">

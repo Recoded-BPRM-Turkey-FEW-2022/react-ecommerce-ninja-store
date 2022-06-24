@@ -13,7 +13,7 @@ export default function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/products" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/products/:id" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>

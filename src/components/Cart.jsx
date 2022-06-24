@@ -105,19 +105,19 @@ function Cart() {
                   <div className="btnPlusMinus">
                     <Button
                       className="btnPlus"
-                      onClick={() => {
-                        setQuantity(quantity + 1);
-                      }}
+                      // onClick={() => {
+                      //   setQuantity(quantity + 1);
+                      // }}
                     >
                       +
                     </Button>
                     <Button
                       className="btnMinus"
                       onClick={() => {
-                        if (data.quantity - 1 >= 1) {
-                          console.log(data.quantity);
-                          setQuantity(data.quantity - 1);
-                        }
+                        // if (data.quantity - 1 >= 1) {
+                        //   console.log(data.quantity);
+                        //   setQuantity(data.quantity - 1);
+                        // }
                       }}
                     >
                       -

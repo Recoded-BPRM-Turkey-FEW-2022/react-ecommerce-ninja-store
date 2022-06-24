@@ -9,7 +9,7 @@ import {
 
 function MainPage() {
   const { isLoading, error, data } = useQuery("repoData", async () => {
-    let res = await fetch("https://fakestoreapi.com/products");
+    let res = await fetch(`https://api.escuelajs.co/api/v1/products`);
     return res.json();
   });
   console.log(data);

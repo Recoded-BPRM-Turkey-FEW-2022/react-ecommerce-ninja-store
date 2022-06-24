@@ -21,7 +21,7 @@ function SingleProduct() {
   const { isLoading, error, data } = useQuery(
     "repoData",
     async () => {
-      let res = await fetch("http://localhost:8000/posts");
+      let res = await fetch("http://localhost:3000/posts");
       return res.json();
     },
     {
@@ -33,7 +33,7 @@ function SingleProduct() {
 
   const queryClinet = useQueryClient();
   const onDeleteHandler = (id) => {
-    axios.delete(`http://localhost:8000/posts/${id}`).then((res) => {
+    axios.delete(`http://localhost:3000/posts/${id}`).then((res) => {
       console.log(res);
       console.log(res.data);
     });
@@ -62,7 +62,7 @@ function SingleProduct() {
                 <Grid item md={3}>
                   <CardMedia
                     component="img"
-                    image={product.image}
+                    image={product.images}
                     title="image title"
                     className="imgList"
                     style={{
@@ -103,20 +103,20 @@ function SingleProduct() {
                   <div className="btnPlusMinus">
                     <Button
                       className="btnPlus"
-                      onClick={() => {
-                        setQuantity(quantity + 1);
-                      }}
+                      // onClick={() => {
+                      //   // setQuantity(quantity + 1);
+                      // }}
                     >
                       +
                     </Button>
                     <Button
                       className="btnMinus"
-                      onClick={() => {
-                        if (data.quantity - 1 >= 1) {
-                          console.log(data.quantity);
-                          setQuantity(data.quantity - 1);
-                        }
-                      }}
+                      // onClick={() => {
+                      //   // if (data.quantity - 1 >= 1) {
+                      //   //   console.log(data.quantity);
+                      //   //   // setQuantity(data.quantity - 1);
+                      //   // }
+                      // }}
                     >
                       -
                     </Button>
