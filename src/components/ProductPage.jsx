@@ -1,8 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { QueryClient, QueryClientProvider, useQuery,useMutation } from "react-query";
-import axios from 'axios';
+import DrobListMenu from "./DrobListMenu";
+import { useParams } from "react-router-dom";
 
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+  useMutation,
+} from "react-query";
+import axios from "axios";
 import {
   Typography,
   TextField,
@@ -17,6 +24,8 @@ import {
   Toolbar,
   Button,
 } from "@mui/material";
+import AddProductList from "./AddProductList";
+
 import AddCardIcon from "@mui/icons-material/AddCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import EmailIcon from "@mui/icons-material/Email";
@@ -29,22 +38,29 @@ import "../style.css";
 const queryClient = new QueryClient();
 
 function ProductPage() {
-  const [quantity,setQuantity]=useState(1)
-  const { isLoading, error, data } = useQuery("repoData", async () => {
+  const { id } = useParams();
 
-    let res = await fetch("https://fakestoreapi.com/products/1");
+  const [quantity, setQuantity] = useState(1);
+  const { isLoading, error, data } = useQuery(`products/${id}`, async () => {
+    let res = await fetch(`https://fakestoreapi.com/products/${id}`);
     return res.json();
   });
 
+
+
   console.log(data);
+  const addData = useMutation((data) => {
+    axios.post("http://localhost:8000/posts", data).catch((e) => {
+      axios.delete(`http://localhost:8000/posts/${data.id}`).then((res) => {
+        console.log(res);
+        console.log(res.data);
+        axios.post("http://localhost:8000/posts", data);
+      });
+    });
+  });
 
-  const addData = useMutation(data => {
-    return axios.post('http://localhost:8000/posts', {data})
-  })
-
+ 
   if (isLoading) return "Loading...";
-
-
   return (
     <QueryClientProvider client={queryClient}>
       <CssBaseline />
@@ -60,6 +76,10 @@ function ProductPage() {
                       component="img"
                       image={data.image}
                       title="image title"
+                      style={{
+                        backgroundSize: "contain",
+                        borderRadius: 10,
+                      }}
                     />
                     <CardActions className="centered">
                       <Button variant="outlined">Add To Wish List</Button>
@@ -72,35 +92,53 @@ function ProductPage() {
                       <Typography gutterBottom variant="h5">
                         {data.title.toUpperCase()}
                       </Typography>
-
                       <Typography className="priceLable">
-                        <h4>
-                          <del>$459.00</del>
-                          <span className="discount">55% off</span>
-                        </h4>
+                        <del>$459.00</del>
+                        <span className="discount">55% off</span>
+
                         <h4 className="realPrice">${data.price}</h4>
                       </Typography>
                       <h5 className="product-title">quantity</h5>
                       <div className="quantityPanel">
-                        <Button variant="outlined" onClick={()=>{
-                           if(quantity-1>=1){setQuantity(quantity-1)}
-                        }}>-</Button>
+                        <Button
+                          variant="outlined"
+                          onClick={() => {
+                            if (quantity - 1 >= 1) {
+                              setQuantity(quantity - 1);
+                            }
+                          }}
+                        >
+                          -
+                        </Button>
                         <TextField
                           id="outlined-basic"
                           variant="outlined"
                           className="quantityTextholder"
                           size="small"
+                          name="numberformat"
+                          inputProps={{
+                            min: 0,
+                            style: { textAlign: "center" },
+                          }}
                           value={quantity}
                         />
-                        <Button variant="outlined" onClick={()=>{
-                          setQuantity(quantity+1)
-                        }}>+</Button>
+                        <Button
+                          variant="outlined"
+                          onClick={() => {
+                            setQuantity(quantity + 1);
+                          }}
+                        >
+                          +
+                        </Button>
                       </div>
                       <div className="actionBtns ">
                         <Button
-                        onClick={e=>addData.mutate(
-                          { ...data,"qunt":quantity }
-                          )}
+                          onClick={(e) => {
+                            addData.mutate({
+                              ...data,
+                              quantity,
+                            });
+                          }}
                           variant="contained"
                           color="error"
                           endIcon={<AddShoppingCartIcon />}
@@ -134,8 +172,9 @@ function ProductPage() {
                       <Rating
                         name="half-rating"
                         defaultValue={data.rating.rate}
-                        precision={0.1}
+                        precision={0.5}
                       />
+                      <span className="count">({data.rating.count})</span>
                     </CardContent>
                     <CardActions>
                       <div className="hr">
@@ -172,7 +211,15 @@ function ProductPage() {
             </Grid>
           </Grid>
         </Container>
+        <Container>
+          <Grid container>
+            <Grid item md={12}>
+              <DrobListMenu />
+            </Grid>
+          </Grid>
+        </Container>
       </main>
+      <AddProductList />
     </QueryClientProvider>
   );
 }
