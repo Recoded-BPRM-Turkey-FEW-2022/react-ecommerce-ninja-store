@@ -362,3 +362,27 @@ Button {
   padding: 2rem;
   background-color: rgb(251, 245, 245);
 }
+=======
+.addToCartBtn{
+   font-size: 1rem !important;
+  width: 100% ;
+}
+a {
+  text-decoration: none;
+}
+
+.css-o69gx8-MuiCardMedia-root {
+  object-fit: contain !important;
+}
+.card{
+  height:280px !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+  padding: 10px !important;
+  transition: all .4s ease-in-out !important;
+}
+.card:hover{
+  box-shadow: rgb(241, 122, 122) 0px 5px 5px !important;
+  transform: scale(1.04);
+
+}
+ 

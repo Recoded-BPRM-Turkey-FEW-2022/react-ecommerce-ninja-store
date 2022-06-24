@@ -22,6 +22,8 @@ function SingleProduct() {
     "repoData",
     async () => {
       let res = await fetch("http://localhost:3000/posts");
+
+    
       return res.json();
     },
     {
@@ -34,6 +36,7 @@ function SingleProduct() {
   const queryClinet = useQueryClient();
   const onDeleteHandler = (id) => {
     axios.delete(`http://localhost:3000/posts/${id}`).then((res) => {
+
       console.log(res);
       console.log(res.data);
     });
@@ -106,6 +109,7 @@ function SingleProduct() {
                       // onClick={() => {
                       //   // setQuantity(quantity + 1);
                       // }}
+                     
                     >
                       +
                     </Button>

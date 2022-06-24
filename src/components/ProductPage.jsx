@@ -42,6 +42,9 @@ function ProductPage() {
   console.log(id)
   const [quantity, setQuantity] = useState(1);
   const { isLoading, error, data } = useQuery(`products/${id}`, async () => {
+
+ 
+
     let res = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`);
     return res.json();
   });
@@ -75,6 +78,7 @@ function ProductPage() {
                       className="productPhoto"
                       component="img"
                       image={data.images}
+                     
                       title="image title"
                       style={{
                         backgroundSize: "contain",
@@ -168,6 +172,7 @@ function ProductPage() {
                       >
                         {data.description}
                       </Typography>
+
                       {/* <h5 className="product-title">Rate:</h5> */}
                       {/* <Rating
                         name="half-rating"
@@ -175,6 +180,9 @@ function ProductPage() {
                         precision={0.5}
                       /> */}
                       {/* <span className="count">({data.rating.count})</span> */}
+
+                      {/* <Rating name="half-rating" defaultValue={"data.rating.rate"} precision={0.1} /> */}
+
                     </CardContent>
                     <CardActions>
                       <div className="hr">

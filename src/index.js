@@ -10,8 +10,8 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <QueryClientProvider client={queryClient}>
-  <App  />
-  <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  
+  <StrictMode>
+      <App />
+  </StrictMode>
 );
