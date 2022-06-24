@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useQuery} from 'react-query';
 import ReactDom from 'react-dom/client';
+//
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
 import { Rating} from '@mui/material';
 import NavbarComp from './NavbarComp';
+import { Link } from 'react-router-dom';
 //import { Rating,Container,Grid,CardActionArea,Typography,CardMedia,Card,CardContent } from '@mui/material';
 
  
@@ -31,7 +33,9 @@ export default function MainPage() {
           return <div>Loading...</div>
      }
       if (status === 'error') {
-          return <div>Error</div>
+          return <div>
+            <img style={{width:'100vw'}} src='https://www.wpoven.com/blog/wp-content/uploads/2022/05/502-1024x691.gif'/>
+          </div>
      
       }
   return (
@@ -39,15 +43,19 @@ export default function MainPage() {
     console.log(data),
     <>  
     <NavbarComp setFiltered={setFiltered}/>
+ 
   <Container maxWidth="xl">
   <Grid container spacing={2} >
   
       {filtered.map(item => (
       
-      <Grid item xs={12} sm={6} md={4} xl={3}  >
-<Card className='card' key={item.id} sx={{ maxWidth: 300 }}>
+      <Grid key={item.id} item xs={12} sm={6} md={4} xl={3} onClick={()=>console.log(item.id)} >
+       
+<Card className='card'  sx={{ maxWidth: 300 }}>
     <CardActionArea>
+    <Link to={`/Test/${item.id}`}>
       <CardMedia
+     
         component="img"
         height="200"
         image= {item.images}
@@ -59,6 +67,7 @@ export default function MainPage() {
           {item.title}
           {<br/>}
           {item.price}
+          {item.title.substring(0, 50)}
         </Typography>
 
         <Typography  component="div">
@@ -71,23 +80,35 @@ export default function MainPage() {
             precision={0.25}/>
             ({item.rating.count})  
           </div> */}
+        {/* <Grid sx={{ display: 'inline-flex' }}>     */}
+            {/* <Rating
+  name="text-feedback"
+  value={item.rating.rate}
+  readOnly
+  precision={0.25}
+                />
+                
+                ({item.rating.count})  
+                </Grid> */}
+                <div>
+                {item.price}$
+                </div>
+                
                 
         </Typography>
       </CardContent>
+      </Link>
     </CardActionArea>
   </Card>
+ 
   </Grid>
-
-
-
-
-         
-
 
 
       ))}  
       </Grid>
       </Container>
+  
+  
        </>
 
 
