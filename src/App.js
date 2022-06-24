@@ -1,6 +1,11 @@
 import React from "react";
 import "./style.css";
 import { useQuery } from "react-query";
+import ProductPage from "./components/ProductPage";
+import { BrowserRouter, Route,Routes } from "react-router-dom";
+import Button from "@mui/material/Button";
+import MainPage from "./components/MainPage";
+import Cart from "./components/Cart";
 import ProductPage from './components/ProductPage'
 import Button from '@mui/material/Button';
 import { useParams } from "react-router";
@@ -25,6 +30,7 @@ const queryClient = new QueryClient();
   const {id}=useParams();
 export default function App() {
   return (
+
     <div>
 
        <QueryClientProvider client={queryClient}> 

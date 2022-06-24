@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "title": "Ergonomic Concrete Ball",
+      "price": 23,
+      "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+      "category": {
+        "id": 2,
+        "name": "Electronics",
+        "image": "https://api.lorem.space/image/watch?w=640&h=480&r=5990"
+      },
+      "images": [
+        "https://api.lorem.space/image/watch?w=640&h=480&r=9222",
+        "https://api.lorem.space/image/watch?w=640&h=480&r=1942",
+        "https://api.lorem.space/image/watch?w=640&h=480&r=6404"
+      ],
+      "quantity": 3
+    },
+    {
+      "id": 3,
+      "title": "Generic Rubber Salad",
+      "price": 711,
+      "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+      "category": {
+        "id": 5,
+        "name": "Others",
+        "image": "https://api.lorem.space/image?w=640&h=480&r=3159"
+      },
+      "images": [
+        "https://api.lorem.space/image?w=640&h=480&r=6365",
+        "https://api.lorem.space/image?w=640&h=480&r=29",
+        "https://api.lorem.space/image?w=640&h=480&r=1338"
+      ],
+      "quantity": 1
+    }
+  ]
+}

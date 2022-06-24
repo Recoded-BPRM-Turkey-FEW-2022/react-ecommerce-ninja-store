@@ -1,40 +1,368 @@
 h1,
 p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-.productPage{
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.productPage {
   margin-top: 5rem;
 }
-.productPanel{
+.productPanel {
   padding: 0.8rem;
-  box-shadow: 0px 0px 3px rgb(149, 148, 148);
+  box-shadow: 0px 0px 1px #ff4c3b;
 }
 
-.productPhoto{
-  min-height: 550px;
+.productPhoto {
+  height: 550px;
 }
 
 .MuiGrid-item {
-  padding: 10px;   
+  padding: 10px;
 }
 
-.quantityPanel  {
+.quantityPanel {
   min-width: 10rem;
+  margin-bottom: 1rem;
 }
 
-.quantityPanel Button{
+.quantityPanel Button {
   height: 2.5rem;
-  max-Width:2rem;
-  min-Width:2rem;
-  margin: 0px 0.2rem;
+  max-width: 2rem;
+  min-width: 2rem;
+  margin: 0px 0.3rem;
 }
 
-.quantityTextholder{
-  width: 4rem;
+.quantityTextholder {
+  width: 6rem;
   height: 3rem;
+  text-align: center;
 }
 
+.actionBtns Button {
+  margin: 0px 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.actionBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+del {
+  color: gray;
+  margin-right: 0.5rem;
+}
+
+.discount {
+  color: red;
+  font-weight: 400;
+}
+
+.realPrice {
+  font-size: 1.7rem;
+  margin: 0px;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.product-title {
+  color: #222222;
+  text-transform: capitalize;
+  font-weight: 700;
+  margin: 0px;
+  margin-bottom: 0.8rem;
+}
+
+.productDetails {
+  min-height: 550px;
+}
+.socialIcon {
+  margin: 0rem;
+}
+.socialIconTable {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hover-fx {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  margin: 5px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 84px;
+  border-radius: 10%;
+  text-align: center;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: 300ms;
+}
+
+.hover-fx:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  content: "";
+  box-sizing: content-box;
+  box-shadow: 0 0 0 3px #fff;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.hover-fx:hover {
+  background-color: rgb(156, 156, 110);
+  color: #ff4c3b;
+}
+
+.hover-fx:hover:after {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.hr {
+  /* border-bottom: 1px solid black; */
+  border-top: 1px solid rgb(189, 181, 181);
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.description {
+  font-size: 0.9rem !important;
+  color: rgb(77, 80, 80);
+}
+
+.centered {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered Button {
+  width: 100%;
+}
+
+:root {
+  --button-bg: rgba(0, 0, 0, 0.4);
+  --sidebar-bg: rgba(0, 0, 0, 0.8);
+}
+
+#side {
+  padding: 5px;
+  position: fixed;
+  background: var(--sidebar-bg);
+  top: 0;
+  width: 400px;
+  left: -400px;
+  transition: 0.7s;
+  z-index: 100;
+  box-shadow: 100vw 100vh 0px calc(max(100vh, 100vw) + 250px) #0000;
+  color: white;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  height: 100vh;
+  font: 500 15px/1.4 nunito, "Trebuchet MS", sans-serif;
+}
+
+#side::before {
+  position: fixed;
+  content: url("../public/photos/icons8-shopping-cart-promotion-100.png");
+  background: var(--button-bg);
+  top: 6rem;
+  left: 0px;
+  background-color: rgb(247, 242, 242);
+  box-shadow: 0px 0px 0px rgb(96, 85, 85);
+
+  color: white;
+  padding: 0;
+  z-index: 0;
+  transition: 0.2s;
+  font-size: 40px;
+  padding-right: 10px;
+  border-radius: 0 1em 1em 0;
+  background-color: ;
+}
+
+#side:active::before,
+#side:hover::before {
+  opacity: 0;
+}
+
+#side:active,
+#side:hover {
+  left: 0px;
+  box-shadow: 100vw 100vh 0px calc(max(100vh, 100vw) + 250px) #0006;
+}
+.singleProduct-title {
+  font-size: 0.8rem !important;
+}
+.realPrice-list {
+  margin: 0px;
+  color: red;
+  font-size: 1rem !important;
+}
+
+.line {
+  height: 1px;
+  border-width: 0;
+  color: gray;
+  background-color: gray;
+}
+
+.listBtn {
+  font-size: 0.6rem !important;
+  background-color: #ff4c3b !important;
+}
+
+.listActionBtns Button {
+  margin: 0.2rem 0.2rem;
+  padding: 0.1rem;
+}
+Button {
+  background-color: #ff4c3b !important;
+  color: white !important;
+  font-family: sans-serif !important;
+}
+.ul {
+  list-style-type: none;
+  margin: 0rem 0px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff4c3b;
+  border-bottom: 3px solid rgb(2, 1, 1);
+}
+.ul li {
+  float: left;
+  font-size: 0.8rem;
+}
+.ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px 1.5rem;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+.ul li a:hover {
+  background-color: rgb(184, 108, 108);
+}
+
+.dropDownParagraph {
+  padding: 1rem;
+  box-shadow: 0px 0px 5px black;
+}
+
+.count {
+  font-size: 0.8rem;
+  position: relative;
+  bottom: 5px;
+  margin: 0px 0.3rem;
+}
+
+.itemsNum {
+  color: #189c06;
+  margin-left: 0.3rem;
+}
+
+.imgList {
+  border: 3px solid #ff4c3b;
+}
+
+.btnPlusMinus button {
+  font-size: 1rem;
+  /* padding-bottom: -1rem; */
+  border-radius: 10%;
+  width: 80px;
+  height: 20px !important;
+  padding: 0rem;
+  background-color: rgba(22, 151, 5, 0.5) !important;
+}
+.btnPlusMinus {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.totalPrice {
+  color: red;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+  margin: 0rem;
+  font-family: sans-serif;
+}
+.cartPage{
+  max-width: 75%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #ff4c3b;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.summary ul li {
+  padding: 0.5rem 0;
+  margin: 0rem;
+}
+
+.summary ul li span {
+  display: inline-block;
+  width: 30%;
+  color: red;
+}
+
+.summary ul li.total {
+  font-weight: bold;
+}
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  list-style-type: none;
+  padding: 0.1em;
+}
+.summary ul{
+  margin: 0rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+.summary{
+  width: fit-content;
+  padding: 2rem;
+  background-color: rgb(251, 245, 245);
+}
+=======
 .addToCartBtn{
    font-size: 1rem !important;
   width: 100% ;
