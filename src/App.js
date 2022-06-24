@@ -12,7 +12,7 @@ import MainPage from "./components/NewMain"
 import {BrowserRouter  , Route, Link, Routes } from 'react-router-dom';
 import Test from './components/Test.jsx'
 import FakeCart from "./components/FakeCart";
- 
+ import NewMain from './components/NewMain.js'
 
  
 const queryClient = new QueryClient();
@@ -28,7 +28,7 @@ export default function App() {
       
       <Routes>
 
-      <Route path='/' element={ <MainPage />} />
+      <Route path='/' element={ <NewMain />} />
 
       <Route path='/Test/:id' element={ <Test />} />
 

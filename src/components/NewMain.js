@@ -17,6 +17,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FormControl} from "react-bootstrap";
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 //import { Rating,Container,Grid,CardActionArea,Typography,CardMedia,Card,CardContent } from '@mui/material';
 
 
@@ -90,7 +91,8 @@ export default function MainPage() {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                 <div className='priceFilter'>
-        <input type="number" name='maxprice' placeholder='max price' value={maxPrice} onChange={(e) =>{setMaxPrice(e.target.value);}}></input>
+        <input type="number" name='maxprice' placeholder='max price' value={maxPrice}
+         onChange={(e) =>{setMaxPrice(e.target.value);}}></input>
         </div>
                     <Nav
                         className="me-auto my-2 my-lg-0"
@@ -131,9 +133,10 @@ export default function MainPage() {
   
       {search(data).map(item => (
       
-      <Grid item xs={12} sm={6} md={4} xl={3}  >
-<Card className='card' key={item.id} sx={{ maxWidth: 300 }}>
+      <Grid key={item.id} item xs={12} sm={6} md={4} xl={3}  >
+<Card className='card'  sx={{ maxWidth: 300 }}>
     <CardActionArea>
+    <Link to={`/Test/${item.id}`}>
       <CardMedia
         component="img"
         height="200"
@@ -145,7 +148,7 @@ export default function MainPage() {
         <Typography variant="body2" color="text.primary">
           {item.title}
           {<br/>}
-          {item.price}
+          ${item.price}
         </Typography>
 
         <Typography  component="div">
@@ -161,6 +164,7 @@ export default function MainPage() {
                 
         </Typography>
       </CardContent>
+      </Link>
     </CardActionArea>
   </Card>
   </Grid>
