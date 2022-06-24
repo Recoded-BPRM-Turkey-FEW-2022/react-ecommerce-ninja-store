@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 
 
 const fetchProducts= async () => {
-  const response = await fetch('https://fakestoreapi.com/products');
+  const response = await fetch('https://api.escuelajs.co/api/v1/products');
   const data = await response.json();
   return data;
 }
@@ -32,7 +32,9 @@ export default function MainPage() {
           return <div>Loading...</div>
      }
       if (status === 'error') {
-          return <div>Error</div>
+          return <div>
+            <img style={{width:'100vw'}} src='https://www.wpoven.com/blog/wp-content/uploads/2022/05/502-1024x691.gif'/>
+          </div>
      
       }
    
@@ -47,25 +49,27 @@ export default function MainPage() {
       {data.map(item => (
       
       <Grid key={item.id} item xs={12} sm={6} md={4} xl={3} onClick={()=>console.log(item.id)} >
-         <Link to={`/Test/${item.id}`}>
+       
 <Card className='card'  sx={{ maxWidth: 300 }}>
     <CardActionArea>
+    <Link to={`/Test/${item.id}`}>
       <CardMedia
+     
         component="img"
         height="200"
-        image= {item.image}
+        image= {item.images}
         
       />
       <CardContent>
       
         <Typography variant="body2" color="text.primary">
-          {item.title}
+          {item.title.substring(0, 50)}
         </Typography>
 
         <Typography  component="div">
 
-        <Grid sx={{ display: 'inline-flex' }}>    
-            <Rating
+        {/* <Grid sx={{ display: 'inline-flex' }}>     */}
+            {/* <Rating
   name="text-feedback"
   value={item.rating.rate}
   readOnly
@@ -73,7 +77,7 @@ export default function MainPage() {
                 />
                 
                 ({item.rating.count})  
-                </Grid>
+                </Grid> */}
                 <div>
                 {item.price}$
                 </div>
@@ -81,9 +85,10 @@ export default function MainPage() {
                 
         </Typography>
       </CardContent>
+      </Link>
     </CardActionArea>
   </Card>
-  </Link>
+ 
   </Grid>
 
 
